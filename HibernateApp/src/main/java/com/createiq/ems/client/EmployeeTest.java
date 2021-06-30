@@ -16,7 +16,7 @@ public class EmployeeTest {
 //			Configuration configuration = new Configuration().configure("com/createiq/ems/config/employee.cfg.xml");
 //			SessionFactory sfFactory = configuration.buildSessionFactory();
 //			Session session = sfFactory.openSession();
-////		Employee employee = new Employee("balu", 32000.00, "balu@gmail.com");
+//		Employee employee = new Employee("anil", 32000.00, "anil@gmail.com");
 ////		session.save(employee);
 ////		Employee employee = (Employee) session.get(Employee.class, 1);
 ////		System.out.println(employee);
@@ -29,6 +29,7 @@ public class EmployeeTest {
 //		System.out.println(session.isConnected());
 
 		EmployeeDAO dao = new EmployeeDaoImpl();
+//		dao.save(employee);
 		List<Employee> allEmps = dao.getAllEmps();
 		for (Employee employee : allEmps) {
 			System.out.println(employee);

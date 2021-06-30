@@ -16,17 +16,20 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 	public void save(Employee employee) {
 		session = HibernateUtil.getSession();
 		session.save(employee);
-		session.close();
+		session.getTransaction().commit();
+		HibernateUtil.closeSession(session);
 
 	}
 
 	public void update(Employee employee) {
-		// TODO Auto-generated method stub
+		session = HibernateUtil.getSession();
+		session.saveOrUpdate(employee);
+		session.getTransaction().commit();
+		HibernateUtil.closeSession(session);
 
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
 
 	}
 
