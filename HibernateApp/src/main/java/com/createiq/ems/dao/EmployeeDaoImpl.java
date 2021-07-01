@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import com.createiq.ems.entity.Employee;
 import com.createiq.ems.util.HibernateUtil;
@@ -30,11 +29,26 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 	}
 
 	public void delete(int id) {
+		session = HibernateUtil.getSession();
+		Employee employee = (Employee) session.get(Employee.class, id);
+		session.delete(employee);
+		session.getTransaction().commit();
+		HibernateUtil.closeSession(session);
 
 	}
 
 	public void findById(int id) {
-		// TODO Auto-generated method stub
+		session = HibernateUtil.getSession();
+//		Employee employee = (Employee) session.get(Employee.class, id);
+//		System.out.println(employee);
+		Query query = session.createQuery("select e.ename, e.esal, e.email from Employee e where e.eid=" + id);
+		List<Object[]> employee = query.list();
+		for (Object[] objects : employee) {
+			System.out.println(objects[0]);
+			System.out.println(objects[1]);
+			System.out.println(objects[2]);
+		}
+		HibernateUtil.closeSession(session);
 
 	}
 

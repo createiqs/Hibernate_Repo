@@ -18,7 +18,7 @@ public class EmployeeTest {
 //			Session session = sfFactory.openSession();
 //		Employee employee = new Employee("anil", 32000.00, "anil@gmail.com");
 ////		session.save(employee);
-////		Employee employee = (Employee) session.get(Employee.class, 1);
+//		Employee employee = (Employee) session.get(Employee.class, 1);
 ////		System.out.println(employee);
 ////		session.getTransaction().commit();
 ////		session.beginTransaction().commit();
@@ -29,11 +29,12 @@ public class EmployeeTest {
 //		System.out.println(session.isConnected());
 
 		EmployeeDAO dao = new EmployeeDaoImpl();
+		dao.findById(1);
 //		dao.save(employee);
-		List<Employee> allEmps = dao.getAllEmps();
-		for (Employee employee : allEmps) {
-			System.out.println(employee);
-		}
+//		List<Employee> allEmps = dao.getAllEmps();
+//		for (Employee employee : allEmps) {
+//			System.out.println(employee);
+//		}
 
 	}
 
