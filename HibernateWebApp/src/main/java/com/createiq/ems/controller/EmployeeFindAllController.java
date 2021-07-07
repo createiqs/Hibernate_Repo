@@ -19,6 +19,7 @@ public class EmployeeFindAllController extends HttpServlet {
 			throws ServletException, IOException {
 		EmployeeDAO dao = new EmployeeDaoImpl();
 		List<Employee> employees = dao.getAllEmps();
+		System.out.println(employees);
 		request.setAttribute("emps", employees);
 		request.getRequestDispatcher("emp.jsp").forward(request, response);
 

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.createiq.ems.entity.Employee;
+import com.createiq.ems.util.ConnectionUtil;
 import com.createiq.ems.util.HibernateUtil;
 
 public class EmployeeDaoImpl implements EmployeeDAO {
@@ -13,11 +14,12 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 	private static Session session = null;
 
 	public void save(Employee employee) {
-		session = HibernateUtil.getSession();
+//		session = HibernateUtil.getSession();
+		session = ConnectionUtil.getSessionFactory().openSession();
 		session.save(employee);
-		session.getTransaction().commit();
-		HibernateUtil.closeSession(session);
-
+		session.beginTransaction().commit();
+//		HibernateUtil.closeSession(session);
+		session.close();
 	}
 
 	public void update(Employee employee) {
@@ -54,13 +56,18 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 
 	public List<Employee> getAllEmps() {
 		session = HibernateUtil.getSession();
-		Query query = session.createQuery("from Employee");
-		List<Employee> listOfEmps = query.list();
+//		session = ConnectionUtil.getSessionFactory().openSession();
+		List<Employee> listOfEmps = session.createQuery("from Employee").list();
 		HibernateUtil.closeSession(session);
-//		for (Employee employee : listOfEmps) {
-//			System.out.println(employee);
-//		}
 		return listOfEmps;
 	}
+
+//	public static void main(String[] args) {
+//		EmployeeDAO dao=new EmployeeDaoImpl();
+//		List<Employee> allEmps = dao.getAllEmps();
+//		for (Employee employee : allEmps) {
+//			System.out.println(employee);
+//		}
+//	}
 
 }
