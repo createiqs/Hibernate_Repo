@@ -2,23 +2,28 @@ package com.createiq.ems.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GenericGenerator(name = "myGen", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "myGen")
 	private Integer id;
 	@Column
 	private String name;
@@ -30,9 +35,11 @@ public class Employee {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date joiningDate;
 //	private byte[] empImage;
-	@OneToOne
+	@OneToOne(cascade =  CascadeType.PERSIST)
 	@JoinColumn(name = "a_id")
 	private Address address;
+//	@OneToMany
+//	private Department department;
 
 	public Employee() {
 		super();

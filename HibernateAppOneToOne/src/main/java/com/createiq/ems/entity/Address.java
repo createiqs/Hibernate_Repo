@@ -1,5 +1,6 @@
 package com.createiq.ems.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,19 +8,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table
 public class Address {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GenericGenerator(name = "myGen", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "myGen")
 	private Integer aid;
 	private String city;
 	private String state;
 	private String pin;
-	
-	@OneToOne(mappedBy = "address")
+
+	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
 	private Employee employee;
+	
 
 	public Address(String city, String state, String pin, Employee employee) {
 		super();

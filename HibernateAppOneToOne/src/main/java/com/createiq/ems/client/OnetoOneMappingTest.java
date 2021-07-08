@@ -18,20 +18,23 @@ public class OnetoOneMappingTest {
 //		Transaction transaction=session.beginTransaction().begin();
 		Employee employee = new Employee();
 		Address address = new Address();
-		address.setCity("Hyd");
-		address.setState("Ts");
-		address.setPin("500038");
+		address.setCity("Bang");
+		address.setState("Kan");
+		address.setPin("300038");
 		address.setEmployee(employee);
-		employee.setName("balu");
-		employee.setSal(32000.00);
-		employee.setEmail("balu@gmail.com");
+		employee.setName("Raj");
+		employee.setSal(22000.00);
+		employee.setEmail("Raj@gmail.com");
 		employee.setJoiningDate(new Date());
 		employee.setAddress(address);
-
-		session.save(address);
-		session.save(employee);
+		System.out.println(session.isConnected());
+//		session.save(employee);
+//		session.flush();
+		session.persist(employee);
+//		session.save(address);
 		session.beginTransaction().commit();
 		session.close();
+		System.out.println(session.isConnected());
 
 	}
 
