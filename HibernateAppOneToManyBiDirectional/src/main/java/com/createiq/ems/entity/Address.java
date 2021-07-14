@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "address_one")
+@Table(name = "address_tab")
 public class Address {
 
 	@Id
@@ -23,7 +23,6 @@ public class Address {
 	private String city;
 	private String state;
 	private String pin;
-
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Employee employee;
 //	

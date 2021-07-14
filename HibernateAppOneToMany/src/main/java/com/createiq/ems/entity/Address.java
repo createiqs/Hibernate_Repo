@@ -1,16 +1,11 @@
 package com.createiq.ems.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
@@ -24,13 +19,10 @@ public class Address {
 	private String state;
 	private String pin;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Employee employee;
 //	
 
-	public Address(String city, String state, String pin, Employee employee) {
+	public Address(String city, String state, String pin) {
 		super();
-		this.employee = employee;
 		this.city = city;
 		this.state = state;
 		this.pin = pin;
@@ -73,20 +65,9 @@ public class Address {
 		this.aid = aid;
 	}
 
-//
-	public Employee getEmployee() {
-		return employee;
-	}
-
-//
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-	@Override
-	public String toString() {
-		return "Address [aid=" + aid + ", city=" + city + ", state=" + state + ", pin=" + pin + ", employee=" + employee
-				+ "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Address [aid=" + aid + ", city=" + city + ", state=" + state + ", pin=" + pin + "]";
+//	}
 
 }

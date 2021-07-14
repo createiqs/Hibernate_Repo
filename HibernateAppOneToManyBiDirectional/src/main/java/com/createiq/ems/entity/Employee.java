@@ -23,7 +23,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.GenericGenerators;
 
 @Entity
-@Table( name = "emp_one")
+@Table( name = "employee_tab")
 public class Employee {
 
 	@Id
@@ -42,7 +42,6 @@ public class Employee {
 	private Date joiningDate;
 //	private byte[] empImage;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "employee")
-	@JoinTable(name = "emp_add_table",joinColumns = (@))
 	private List<Address> address;
 
 	public Employee() {

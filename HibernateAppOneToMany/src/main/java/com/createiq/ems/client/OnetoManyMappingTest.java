@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,36 +24,41 @@ public class OnetoManyMappingTest {
 //		Employee emObject = (Employee) session.get(Employee.class, 1);
 //		System.out.println(emObject);
 //		Transaction transaction=session.beginTransaction().begin();
-		Employee employee = new Employee();
+//		Employee employee = new Employee();
+//
+//		Address currentAddres = new Address();
+//		currentAddres.setState("Kan");
+//		currentAddres.setCity("Beng");
+//		currentAddres.setPin("300038");
+//
+//		Address permineentAddres = new Address();
+//		permineentAddres.setState("vengal rao nagar");
+//		permineentAddres.setCity("hyd");
+//		permineentAddres.setPin("500038");
+//
+//		List<Address> addAll = new ArrayList<Address>();
+//		addAll.add(currentAddres);
+//		addAll.add(permineentAddres);
+//
+//		employee.setName("balu");
+//		employee.setSal(32000.00);
+//		employee.setEmail("balu@gmail.com");
+//		employee.setJoiningDate(new Date());
+//		employee.setAddress(addAll);
 
-		Address currentAddres = new Address();
-		currentAddres.setState("Kan");
-		currentAddres.setCity("Beng");
-		currentAddres.setPin("300038");
-		currentAddres.setEmployee(employee);
+//		session.save(employee);
+//		session.beginTransaction().commit();
+//		session.close();
+//		System.out.println(session.isConnected());
 
-		Address permineentAddres = new Address();
-		permineentAddres.setState("vengal rao nagar");
-		permineentAddres.setCity("hyd");
-		permineentAddres.setPin("500038");
-		permineentAddres.setEmployee(employee);
+//		Employee employee1 = (Employee) session.get(Employee.class, 1);
+//		System.out.println(employee1);
 
-		List<Address> addAll = new ArrayList<Address>();
-		addAll.add(currentAddres);
-		addAll.add(permineentAddres);
-
-		employee.setName("balu");
-		employee.setSal(32000.00);
-		employee.setEmail("balu@gmail.com");
-		employee.setJoiningDate(new Date());
-//		employee.getAddress().add(currentAddres);
-//		employee.getAddress().add(permineentAddres);
-		employee.setAddress(addAll);
-
-		session.save(employee);
-		session.beginTransaction().commit();
-		session.close();
-		System.out.println(session.isConnected());
+		Criteria criteria = session.createCriteria(Employee.class);
+		List<Employee> employees = criteria.list();
+		for (Employee employee : employees) {
+			System.out.println(employee);
+		}
 
 	}
 

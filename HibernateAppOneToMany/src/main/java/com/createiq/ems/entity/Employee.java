@@ -43,8 +43,6 @@ public class Employee {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "a_id")
 	private List<Address> address;
-//	@OneToMany
-//	private Department department;
 
 	public Employee() {
 		super();
