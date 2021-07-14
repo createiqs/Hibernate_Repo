@@ -1,0 +1,6 @@
+com\createiq\ems\entity\Address.class
+com\createiq\ems\util\HibernateUtil.class
+com\createiq\ems\entity\Employee.class
+com\createiq\ems\dao\EmployeeDaoImpl.class
+com\createiq\ems\client\OnetoManyMappingTestBiDirectional.class
+com\createiq\ems\dao\EmployeeDAO.class
