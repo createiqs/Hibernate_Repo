@@ -2,6 +2,7 @@ package com.createiq.ems.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Address {
 	private String city;
 	private String state;
 	private String pin;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Employee employee;
 //	
 
@@ -86,7 +87,5 @@ public class Address {
 		return "Address [aid=" + aid + ", city=" + city + ", state=" + state + ", pin=" + pin + ", employee=" + employee
 				+ "]";
 	}
-
-	 
 
 }
