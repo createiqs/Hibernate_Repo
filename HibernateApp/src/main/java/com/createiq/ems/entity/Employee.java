@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class Employee {
 
 	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int eid;
 	@Column(nullable = false)
 	private String ename;
@@ -25,6 +25,18 @@ public class Employee {
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	
+	public Employee(int eid, String ename, double esal, String email) {
+		super();
+		this.eid = eid;
+		this.ename = ename;
+		this.esal = esal;
+		this.email = email;
+	}
+
+
 
 	public Employee(String ename, double esal, String email) {
 

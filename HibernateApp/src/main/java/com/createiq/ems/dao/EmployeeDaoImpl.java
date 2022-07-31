@@ -2,6 +2,7 @@ package com.createiq.ems.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -10,12 +11,18 @@ import com.createiq.ems.util.HibernateUtil;
 
 public class EmployeeDaoImpl implements EmployeeDAO {
 
+	static Logger LOGGER = Logger.getLogger(EmployeeDaoImpl.class);
 	private static Session session = null;
 
 	public void save(Employee employee) {
 		session = HibernateUtil.getSession();
 		session.save(employee);
+		LOGGER.info("successfully saved: " + employee);
+		if (employee == null) {
+			LOGGER.error("employee is null");
+		}
 		session.getTransaction().commit();
+		LOGGER.debug("employee saved and session going to be close");
 		HibernateUtil.closeSession(session);
 
 	}

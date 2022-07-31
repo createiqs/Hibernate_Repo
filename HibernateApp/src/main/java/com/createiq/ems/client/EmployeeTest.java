@@ -8,9 +8,8 @@ import org.hibernate.cfg.Configuration;
 import com.createiq.ems.entity.Employee;
 
 public class EmployeeTest {
-
 	public static void main(String[] args) {
-		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+		Configuration configuration = new Configuration().configure("employee.cfg.xml");
 		SessionFactory sfFactory = configuration.buildSessionFactory();
 		Session session = sfFactory.openSession();
 		Transaction transaction = session.beginTransaction();

@@ -11,7 +11,7 @@
 			jdbc:oracle:thin:@localhost:1521:XE
 		</property>
 		<property name="connection.username">anil</property>
-		<property name="connection.password">root</property>
+		<property name="connection.password">anil</property>
 		<property name="connection.driver_class">
 			oracle.jdbc.driver.OracleDriver
 		</property>
